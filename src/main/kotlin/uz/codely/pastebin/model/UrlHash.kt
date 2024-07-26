@@ -11,8 +11,9 @@ class UrlHash {
     @Column(name = "id")
     var id: Int = 0
 
-    @Column(name = "text_id")
-    var textId: Int = 0
+    @OneToOne
+    @JoinColumn(name = "text_id", referencedColumnName = "id")
+    lateinit var text: Text
 
     @Column(name = "url")
     lateinit var url : String
@@ -21,5 +22,5 @@ class UrlHash {
     val createdAt : LocalDateTime = LocalDateTime.now()
 
     @Column(name = "expires_at")
-    lateinit var expiresAt: String
+    lateinit var expiresAt: LocalDateTime
 }
